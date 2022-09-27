@@ -1,0 +1,12 @@
+.inputs{
+    display: flex;
+    max-width: 312px;
+    width: 100%;
+    justify-content: flex-end;
+}
+.slash{
+    margin: 0 5px;
+}
+.input{
+
+}

@@ -1,0 +1,36 @@
+.layout{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 70px;
+    padding-top: 12%;
+}
+.wrapper{
+    width: 80%;
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 5px 5px gray;
+}
+.content{
+    width: 100%;
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+    padding-right: 25px;
+}
+@media screen and (max-width: 575px){
+    .content{
+        margin-top: 10px;
+        padding-right: 0;
+    }
+    .layout{
+        padding-top: 80px;
+        margin-bottom: 80px;
+    }
+}
