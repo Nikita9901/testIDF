@@ -1,5 +1,6 @@
 {
   "name": "text-idf",
+  "homepage": "https://nikita9901.github.io/testIDF/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
