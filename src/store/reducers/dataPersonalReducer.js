@@ -1,5 +1,6 @@
 import { SUBMIT_PERSONAL_INFORMATION } from "../constants/actionTypes";
 
+// Редьюсер для обработки формы Personal
 const initialState = {
   first_name: "",
   last_name: "",

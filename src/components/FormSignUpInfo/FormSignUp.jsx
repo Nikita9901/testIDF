@@ -1,22 +1,32 @@
+import { JSONSchema } from "../../JSONSchema";
+
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { setPersonSignUpInfo } from "../../store/actions";
+
 import { Button, Form, Input, message } from "antd";
 import MaskedInput from "react-maskedinput";
-import { JSONSchema } from "../../JSONSchema";
-import { useDispatch } from "react-redux";
-import { setPersonSignUpInfo } from "../../store/actions";
+
 import PropTypes from "prop-types";
 import styles from "./FormSignUp.module.css";
 
 const FormSignUp = ({ nextForm }) => {
+  // Управляемый инпут, дл проверки на корректность
   const [email, setEmail] = useState("");
 
+  // Функция диспатч
   const dispatch = useDispatch();
   const dispatchInfo = (value) => {
     dispatch(setPersonSignUpInfo(value));
   };
+
+  // Сообщения сверху
   const error = (text) => {
     message.error(text);
   };
+
+  // Обработка отправки формы: проверка значений, диспатчим информацию
   const onFinish = (values) => {
     if (values["password"] !== values["passwordr"]) {
       error("Пароли не совпадают");
@@ -40,9 +50,11 @@ const FormSignUp = ({ nextForm }) => {
     nextForm();
   };
 
+  // Если отправка не удалась
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div className={styles.wrapper}>
       <Form

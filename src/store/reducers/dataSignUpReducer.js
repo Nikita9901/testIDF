@@ -1,5 +1,6 @@
 import { SUBMIT_SIGNUP_INFORMATION } from "../constants/actionTypes";
 
+// Редьюсер для обработки формы SignUp
 const initialState = {
   phone: "",
   email: "",

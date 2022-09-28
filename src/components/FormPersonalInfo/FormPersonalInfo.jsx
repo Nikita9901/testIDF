@@ -1,5 +1,9 @@
-import PropTypes from "prop-types";
-import styles from "./FormPersonalInfo.module.css";
+import { JSONSchema } from "../../JSONSchema";
+
+import { useDispatch } from "react-redux";
+
+import { setPersonPersonalInfo } from "../../store/actions";
+
 import {
   Button,
   Form,
@@ -11,19 +15,24 @@ import {
   Row,
   Col,
 } from "antd";
-import { useDispatch } from "react-redux";
-import { setPersonPersonalInfo } from "../../store/actions";
-import { JSONSchema } from "../../JSONSchema";
 import MaskedInput from "react-maskedinput";
 
+import PropTypes from "prop-types";
+import styles from "./FormPersonalInfo.module.css";
+
 const FormPersonalInfo = ({ prev, done }) => {
+  // Функция диспатч
   const dispatch = useDispatch();
   const dispatchInfo = (value) => {
     dispatch(setPersonPersonalInfo(value));
   };
+
+  // Сообщения сверху
   const error = (text) => {
     message.error(text);
   };
+
+  // Обработка отправки формы: проверка значений, диспатчим информацию
   const onFinish = (values) => {
     const d = new Date(
       values["birthyear"],
@@ -63,9 +72,11 @@ const FormPersonalInfo = ({ prev, done }) => {
     done();
   };
 
+  // Если отправка не удалась
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <>
       <Form
