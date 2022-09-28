@@ -6,10 +6,8 @@ import { useDispatch } from "react-redux";
 import { setPersonSignUpInfo } from "../../store/actions";
 import PropTypes from "prop-types";
 import styles from "./FormSignUp.module.css";
-// import "jquery-mask-plugin/dist/jquery.mask.min";
 
 const FormSignUp = ({ nextForm }) => {
-  //Для управляемого инпута
   const [email, setEmail] = useState("");
 
   const dispatch = useDispatch();
@@ -77,13 +75,6 @@ const FormSignUp = ({ nextForm }) => {
               type="tel"
               className={"ant-input"}
               mask={"+375 (11) 111-11-11"}
-              formatCharacters={{
-                S: {
-                  validate(char) {
-                    return /[0-9]/.test(char);
-                  },
-                },
-              }}
             />
           </Form.Item>
           <Form.Item

@@ -1,6 +1,7 @@
 .inputs{
     display: flex;
     max-width: 312px;
+    height: 35px;
     width: 100%;
     justify-content: flex-end;
 }
@@ -8,5 +9,13 @@
     margin: 0 5px;
 }
 .input{
-
+    width: 70px;
+    min-width: 70px;
+    border: 1px solid rgba(173, 173, 173, 0.4);
+    border-radius: 3px;
+}
+@media screen and (max-width: 575px){
+    .inputs{
+        justify-content: flex-start;
+    }
 }

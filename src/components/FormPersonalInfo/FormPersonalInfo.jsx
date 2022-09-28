@@ -14,6 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { setPersonPersonalInfo } from "../../store/actions";
 import { JSONSchema } from "../../JSONSchema";
+import MaskedInput from "react-maskedinput";
 
 const FormPersonalInfo = ({ prev, done }) => {
   const dispatch = useDispatch();
@@ -68,13 +69,12 @@ const FormPersonalInfo = ({ prev, done }) => {
   return (
     <>
       <Form
-        size={"small"}
         name="basic"
         labelCol={{
-          span: 11,
+          span: 12,
         }}
         wrapperCol={{
-          span: 16,
+          span: 20,
         }}
         initialValues={{
           remember: true,
@@ -89,7 +89,7 @@ const FormPersonalInfo = ({ prev, done }) => {
           rules={[
             {
               required: true,
-              message: "Please input your first name!",
+              message: "Please input first name!",
             },
           ]}
         >
@@ -101,7 +101,7 @@ const FormPersonalInfo = ({ prev, done }) => {
           rules={[
             {
               required: true,
-              message: "Please input your last name!",
+              message: "Please input last name!",
             },
           ]}
         >
@@ -124,7 +124,7 @@ const FormPersonalInfo = ({ prev, done }) => {
         </Form.Item>
         <Form.Item
           labelCol={{
-            span: 8,
+            span: 5,
           }}
           label="Birthday"
           rules={[
@@ -140,10 +140,21 @@ const FormPersonalInfo = ({ prev, done }) => {
               rules={[
                 {
                   required: JSONSchema.birthday.required,
+                  message: "Not valid",
                 },
               ]}
             >
-              <Input placeholder={"dd"} className={styles.input} />
+              <MaskedInput
+                id={"dd"}
+                type="text"
+                className={styles.input}
+                mask={"11"}
+                placeholder={"dd"}
+                onChange={(e) => {
+                  if (e.target.value[1] !== "_" && e.target.value !== "")
+                    document.getElementById("mm").focus();
+                }}
+              />
             </Form.Item>
             <p className={styles.slash}>/</p>
             <Form.Item
@@ -151,10 +162,23 @@ const FormPersonalInfo = ({ prev, done }) => {
               rules={[
                 {
                   required: JSONSchema.birthday.required,
+                  message: "Not valid",
                 },
               ]}
             >
-              <Input placeholder={"mm"} />
+              <MaskedInput
+                id={"mm"}
+                type="text"
+                className={styles.input}
+                mask={"11"}
+                placeholder={"mm"}
+                onChange={(e) => {
+                  if (e.target.value[1] !== "_" && e.target.value !== "")
+                    document.getElementById("yy").focus();
+                  if (e.target.value === "")
+                    document.getElementById("dd").focus();
+                }}
+              />
             </Form.Item>
             <p className={styles.slash}>/</p>
             <Form.Item
@@ -162,14 +186,23 @@ const FormPersonalInfo = ({ prev, done }) => {
               rules={[
                 {
                   required: JSONSchema.birthday.required,
+                  message: "Not valid",
                 },
               ]}
             >
-              <Input placeholder={"yyyy"} />
+              <MaskedInput
+                id={"yy"}
+                type="text"
+                className={styles.input}
+                mask={"1111"}
+                placeholder={"yyyy"}
+                onChange={(e) => {
+                  if (e.target.value === "")
+                    document.getElementById("mm").focus();
+                }}
+              />
             </Form.Item>
           </div>
-
-          {/*<DatePicker />*/}
         </Form.Item>
         <Form.Item
           label="Your Favorite Ocean"
