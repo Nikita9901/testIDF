@@ -1,4 +1,4 @@
-## Open [Task](https://nikita9901.github.io/testIDF/) to view it in your browser.
+## Open [Task](https://nikita9901.github.io/testIDF/) to view it on gh-pages in your browser.
 
 # Just input an information
 
